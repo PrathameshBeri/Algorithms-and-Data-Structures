@@ -103,4 +103,29 @@ class TreeStruct<T extends Comparable<T>>{
         inOrderTraversalHelper(helper.rightNode);
     }
 
+
+
+    public void inOrderTraversalMod(int n){
+
+        inOrderTraversalHelperMod(root, int n);
+
+    }
+
+    private void inOrderTravesalHelperMod(TreeNode t, int n){
+
+        if(t == null){
+
+            return;
+        }
+
+        inOrderTravesalHelperMod(t.rightNode, n +4);
+        for(int u = 0 ; u < n; u ++){
+            System.out.printf(" ");
+        }
+        System.out.printf("%d %n", t.getData());
+
+        inOrderTravesalHelperMod(t.leftNode, n + 4);
+
+    }
+
 }

@@ -25,6 +25,8 @@ class TreeTrav{
         System.out.println("The inorder traversal of this tree is ");
         tree1.inOrderTraversal();
 
+        tree.inOrderTraversalMod(0);
+
     }
 
 
