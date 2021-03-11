@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class DepthFirstSearch {
+
+public class BreadthFirstSearch {
 
     public static void main(String args[]) throws IOException {
 
@@ -24,11 +25,9 @@ public class DepthFirstSearch {
 
         }
 
-        //   graph.printGraphStructure();
-
-        DepthFirstSearchHelper dfs = new DepthFirstSearchHelper(graph);
-        dfs.depthFirstSearch(6);
-        Arrays.stream(dfs.edgeTo).forEach(System.out::println);
+        BreadthFirstSearchHelper bfs = new BreadthFirstSearchHelper(graph);
+        bfs.breadthFirstSearch(0);
+        Arrays.stream(bfs.edgeTo).forEach(System.out::println);
 
     }
 }
