@@ -17,7 +17,6 @@ public class DiGraph {
 
     void addEdge(int fromEdge, int toEdge) {
         adjacencyMatrix[fromEdge].addItem(toEdge);
-        adjacencyMatrix[toEdge].addItem(fromEdge);
     }
 
     Iterator getIteratorForVertex(int vertex) {
@@ -35,5 +34,21 @@ public class DiGraph {
             count++;
             System.out.println();
         }
+    }
+
+
+    DiGraph reverseGraph() {
+
+        Bag<Integer>[] reverseGraph = new Bag[vertices];
+        for (int i = 0; i < vertices; i++) {
+            reverseGraph[i] = new Bag<>();
+            for (Iterator it = getIteratorForVertex(i); it.hasNext(); ) {
+                reverseGraph[i].addItem((int) it.next());
+            }
+        }
+
+        DiGraph diGraph = new DiGraph(reverseGraph().vertices);
+        diGraph.adjacencyMatrix = reverseGraph;
+        return diGraph;
     }
 }
