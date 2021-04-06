@@ -31,4 +31,8 @@ public class EdgeWeightedGraph {
         return adjacencyList[vertex].getAll();
     }
 
+    public int getVertices(){
+        return vertices;
+    }
+
 }
