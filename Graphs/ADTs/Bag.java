@@ -3,7 +3,7 @@ package ADTs;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-class Bag<T> {
+public class Bag<T> {
 
 
     public Iterator<T> getAll() {
@@ -31,12 +31,12 @@ class Bag<T> {
     Node<T> first;
     int count;
 
-    Bag() {
+    public Bag() {
         first = null;
         count = 0;
     }
 
-    Bag(T data) {
+    public Bag(T data) {
         first = new Node<>(data);
         count++;
     }
