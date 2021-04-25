@@ -31,6 +31,11 @@ public class EdgeWeightedDigraph {
         return adjacencyList[vertex].getAll();
     }
 
+
+    public Iterable<DirectedEdge> getIterableEdges(int vertex) {
+        return (Iterable) adjacencyList[vertex].getAll();
+    }
+
     public int getVertices() {
         return vertices;
     }
