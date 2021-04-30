@@ -49,7 +49,6 @@ public class IndexMinPQImpl<Key extends Comparable<Key>> implements IndexMinPQ {
         swim(k);
         sink(k);
         qp[k] = -1;
-        pq[n+1] = -1;
         keys[k] = null;
     }
 
