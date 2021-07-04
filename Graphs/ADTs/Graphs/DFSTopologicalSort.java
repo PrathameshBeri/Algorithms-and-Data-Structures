@@ -1,18 +1,18 @@
-package ADTs.EdgeWeightedDigraph;
+package ADTs.Graphs;
 
 import java.util.Iterator;
 import java.util.Stack;
 
-public class TopologicalSortEW {
+public class DFSTopologicalSort {
 
     Stack<Integer> postOrder;
-    EdgeWeightedDigraph graph;
+    DiGraph graph;
     boolean[] visited;
 
-    TopologicalSortEW(EdgeWeightedDigraph graph) {
+    DFSTopologicalSort(DiGraph graph) {
         this.graph = graph;
         postOrder = new Stack<>();
-        visited = new boolean[graph.getVertices()];
+        visited = new boolean[graph.vertices];
     }
 
     void createTopologicalSort() {
@@ -23,21 +23,22 @@ public class TopologicalSortEW {
 
     void topologicalSortHelper(int e) {
 
-        for (int i = e; i < graph.getVertices(); i++) {
+        for (int i = e; i < graph.vertices; i++) {
             if (!visited[i]) {
-                depthFirstSearch(graph, i);
+                    depthFirstSearch(graph, i);
             }
         }
     }
 
-    void depthFirstSearch(EdgeWeightedDigraph g, Integer vertex) {
+    void depthFirstSearch(DiGraph g, Integer vertex){
         visited[vertex] = true;
-        for (Iterator it = g.getEdges(vertex); it.hasNext(); ) {
-            int i = (int) it.next();
-            if (!visited[i]) {
+        for (Iterator it = g.getIteratorForVertex(vertex); it.hasNext(); ) {
+            int i = (int)it.next();
+            if(!visited[i]){
                 depthFirstSearch(graph, i);
             }
         }
+
         postOrder.push(vertex);
     }
 
