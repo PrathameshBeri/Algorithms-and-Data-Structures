@@ -102,24 +102,20 @@ public class Tree<T extends Comparable<? super T>> {
         if(n == null){
             return 0;
         }else if(n.getValue() == val){
-            return 1 + rankHelper(n.getLeft());
+            return rankHelper(n.getLeft());
         }else if( n.getValue().compareTo(val) < 0){
             if(n.getRight() == null){
                 return  1 + rankHelper(n.getLeft());
-            }else if(n.getRight().getValue().compareTo(val) < 0){
-                return 1 + rankHelper(n.getLeft())  ;
             }else{
-                return  rankHelper(n.getLeft()) + searchHelper(n.getRight(), val);
+                return 1+ rankHelper(n.getLeft()) + searchHelper(n.getRight(), val);
             }
 
         }else if(n.getValue().compareTo(val) > 0){
 
             if(n.getLeft() == null){
                 return 0;
-            }else if(n.getLeft().getValue().compareTo(val) > 0){
+            }else {
                 return searchHelper(n.getLeft(), val);
-            }else{
-                return searchHelper(n.getLeft(), val) ;
             }
 
         }

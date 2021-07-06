@@ -10,6 +10,8 @@ public class BSTtest {
 
         char[] llbss = new char[]{'s','e','a','r','c', 'h','x', 'm'};
 
+        char[] llbss1 = new char[]{'t','v','f','b','d','z', 'n','g','i'};
+
      RedBlackTree<Character> rbt = new RedBlackTree<>();
 
         for(char c : llbss){
