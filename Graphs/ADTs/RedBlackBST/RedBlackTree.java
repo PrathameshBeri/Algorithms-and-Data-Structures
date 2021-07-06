@@ -1,4 +1,4 @@
-package ADTs.RedBlackBST;
+package Graphs.ADTs.RedBlackBST;
 
 public class RedBlackTree<T extends Comparable<? super T>> extends Tree<T>{
 

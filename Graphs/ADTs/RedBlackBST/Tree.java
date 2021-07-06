@@ -1,4 +1,6 @@
-package ADTs.RedBlackBST;
+package Graphs.ADTs.RedBlackBST;
+
+import Graphs.ADTs.RedBlackBST.Node;
 
 public class Tree<T extends Comparable<? super T>> {
 
@@ -56,6 +58,82 @@ public class Tree<T extends Comparable<? super T>> {
             System.out.print(" " + root.getValue() + " ");
             inorderHelper(root.getRight());
 
+        }
+
+    }
+
+    public int rank(T n){
+        return searchHelper(root, n);
+
+    }
+
+    /*private Node searchHelper(Node n, T val){
+        if(n == null){
+            return null;
+        }else if(n.getValue() == val){
+            return n;
+        }else if( n.getValue().compareTo(val) < 0){
+            if(n.getRight() == null){
+                return n;
+            }else if(n.getRight().getValue().compareTo(val) < 0){
+                return n;
+            }else{
+                return searchHelper(n.getRight(),val);
+            }
+
+        }else if(n.getValue().compareTo(val) > 0){
+
+            if(n.getLeft() == null){
+                return n;
+            }else if(n.getLeft().getValue().compareTo(val) > 0){
+                return searchHelper(n.getLeft(), val);
+            }else{
+                return n;
+            }
+
+        }
+
+        return null;
+    }
+*/
+
+
+    private int searchHelper(Node n, T val){
+        if(n == null){
+            return 0;
+        }else if(n.getValue() == val){
+            return 1 + rankHelper(n.getLeft());
+        }else if( n.getValue().compareTo(val) < 0){
+            if(n.getRight() == null){
+                return  1 + rankHelper(n.getLeft());
+            }else if(n.getRight().getValue().compareTo(val) < 0){
+                return 1 + rankHelper(n.getLeft())  ;
+            }else{
+                return  rankHelper(n.getLeft()) + searchHelper(n.getRight(), val);
+            }
+
+        }else if(n.getValue().compareTo(val) > 0){
+
+            if(n.getLeft() == null){
+                return 0;
+            }else if(n.getLeft().getValue().compareTo(val) > 0){
+                return searchHelper(n.getLeft(), val);
+            }else{
+                return searchHelper(n.getLeft(), val) ;
+            }
+
+        }
+
+        return 0;
+    }
+    private int rankHelper(Node n){
+        if(n == null){
+            return 0;
+        }else if(n.getLeft() == null && n.getRight() == null){
+            return 1;
+        }else{
+
+            return 1 + ( rankHelper(n.getLeft()) + rankHelper(n.getRight()));
         }
 
     }

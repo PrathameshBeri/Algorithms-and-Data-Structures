@@ -1,4 +1,4 @@
-package ADTs.RedBlackBST;
+package Graphs.ADTs.RedBlackBST;
 
 public class BSTtest {
 
@@ -8,7 +8,7 @@ public class BSTtest {
 
         int[] llrbarr1 = new int[]{};
 
-        char[] llbss = new char[]{'s','e','a','r','c', 'h','x','m','p','l'};
+        char[] llbss = new char[]{'s','e','a','r','c', 'h','x', 'm'};
 
      RedBlackTree<Character> rbt = new RedBlackTree<>();
 
@@ -16,7 +16,12 @@ public class BSTtest {
             rbt.insert(c);
         }
 
-        rbt.printInorder();
-        //System.out.println(rbt.root.isColor());
+        //rbt.printInorder();
+
+        System.out.println(rbt.root.isColor());
+        for(char c : llbss){
+            System.out.println(" the rank of char " + c + " is " + rbt.rank(c));
+        }
+
     }
 }
