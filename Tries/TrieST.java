@@ -10,15 +10,15 @@ public class TrieST<T> {
     }
 
     public void put(String key, T value){
-        Node n = putHelper(key, value, root, 0);
+        root = putHelper(key, value, root, 0);
     }
 
 
     private Node putHelper(String key, T value, Node node, int digit){
         if(node == null) node = new Node();
-        if(digit == key.length()) {node.value = value; return node;}
+        if(digit == key.length() - 1) {node.value = value; return node;}
         char c = key.charAt(digit);
-        node.nodes[c] = putHelper(key, value, node.nodes[c], digit++ );
+        node.nodes[c] = putHelper(key, value, node.nodes[c], digit+1 );
         return node;
     }
 
@@ -35,9 +35,9 @@ public class TrieST<T> {
 
     private Node get(String key, Node node, int digit){
         if(node == null ) return null;
-        if(digit == key.length()) return node;
+        if(digit == key.length() - 1 ) return node;
 
-        return get(key, node.nodes[key.charAt(digit)], digit++);
+        return get(key, node.nodes[key.charAt(digit)], digit+1);
     }
 
     private static class Node{
