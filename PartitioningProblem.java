@@ -15,8 +15,8 @@ public class PartitioningProblem {
         int p[] = new int[input.length + 1];
 
         p[0] = 0;
-        for(int i = 1; i <= input.length -1; i++){
-            p[i] = p[i - 1] + input[i];
+        for(int i = 1; i <= input.length; i++){
+            p[i] = p[i - 1] + input[i - 1];
         }
 
         for(int i = 1; i <=  input.length; i++){
@@ -29,20 +29,29 @@ public class PartitioningProblem {
         for(int i = 1; i <= input.length; i++){
             for(int j = 1; j <=k; j++ ){
 
-                int max = Integer.MAX_VALUE;
+                m[i][j] = Integer.MAX_VALUE;
 
-                for(int o = 1; o < i -1; o++ ){
+                for(int o = 0; o <= i -1; o++ ){
                     int val = Math.max(p[i] - p[o], m[o][j-1]);
-                    if(max > val){
-                        max = val;
-                        m[i][j] = max;
+                    if(m[i][j] > val){
+                        m[i][j] = val;
                         d[i][j] = o;
                     }
                 }
             }
         }
+        printMatrix(m);
+    //reconstructPartition(input, m , input.length, k);
+    }
 
-    reconstructPartition(input, m , input.length, k);
+    private static void printMatrix(int[][] m) {
+
+        for(int q = 0; q < m.length; q++){
+            for(int w = 0; w < m[0].length; w++){
+                System.out.print(" " + m[q][w]);
+            }
+            System.out.println();
+        }
     }
 
     private static void reconstructPartition(int[] input, int[][] m, int l, int k) {
